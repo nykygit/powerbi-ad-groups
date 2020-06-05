@@ -1,5 +1,5 @@
 # powerbi-ad-groups
-Automatically create and maintain AD Groups for all Power BI Objects in Power BI Report Server
+Automatically create and maintain AD Groups for all Objects in Power BI Report Server.  AD Groups Names will mirror the unique GUIDs found in the Power BI database.  Groups will be assigned permissions to all Power BI Objects that have no inheritance.
 
 
 ## About
@@ -17,12 +17,11 @@ Why does this happen?  Well, just because you have access to a Report 3 folders 
 
 Another major Access Control issue that is quite bothersome is the fact that adding users to AD Groups requires a reboot.  This is just the way the Windows Session Token works - groups are stored in your session token.  This means every time you grant access via an AD Group you have to ask the user to reboot.  The only solution is to establish standardized Team Based Groups based on Department or Sub Team names, and then grant that team or department group access within the Report Access Group.  This will effectively make permissions effective immediately.
 
-
 ## How this solution works?
 
 1. We run a PS script via Windows Task Scheduler Job as a Managed Service Account that has access to edit the security groups in an AD OU.
 2. We get a list of Objects from the POWER BI REPORT SERVER catalog table.
-3. We Create Update Delete Matching AD Groups and Descriptions based on POWERBI object GUIDs.  The GUIDs are unique, even if the report gets moved or renamed in another folder.
-4. We automatically assign any Groups to Objects where inheritance was broken.
-5. We mark any AD Group Descriptions where inheritance not broken as INACTIVE - to indicate that the groups were not assigned POWERBI permissions.
-6. This is all about read only access.  we can expand this to distinguish between Content Manager and Browser access.
+3. We Create Update and Delete Matching AD Groups and Descriptions based on POWERBI object GUIDs.
+4. We automatically Groups to Object Permissions where there is no inheritance, directly in the database.
+5. We mark any AD Group Descriptions as INACTIVE if the object has inheritance - to indicate that the group is not being used.
+6. This is read only access.  The other roles could be created but Read access generally is the most requested.
