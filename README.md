@@ -1,4 +1,4 @@
-# powerbi-ad-groups
+# POWERBI AD GROUPS
 Automatically create and maintain AD Groups for all Objects in Power BI Report Server.  AD Groups Names will mirror the unique GUIDs found in the Power BI database.  Groups will be assigned permissions to all Power BI Objects that have no inheritance.
 
 
