@@ -15,7 +15,7 @@ Power BI Permissions are often a mix of Inherited vs Broken Inheritance.  This l
 
 Why does this happen?  Well, just because you have access to a Report 3 folders deep, doesn't mean you have access to Folder Level 1 and 2 to navigate there.  Windows File Server Admins have to deal with the exact same issue when it comes to File Shares.  Without going into the details, the solution is simple.  Flatten the hierarchy, create a new folder, name it good, and set permission on the Folder Level.
 
-Another major Access Control issue that is quite bothersome is the fact that adding users to AD Groups requires a reboot.  This is just the way the Windows Session Token works - groups are stored in your session token.  This means every time you grant access via an AD Group you have to ask the user to reboot.  The only solution is to establish standardized Team Based Groups based on Department or Sub Team names, and then grant that team or department group access within the Report Access Group.  This will effectively make permissions effective immediately.
+Another major Access Control issue that is quite bothersome is the fact that adding users to AD Groups requires a reboot.  This is just the way the Windows Session Token works - groups are stored in your session token.  This means every time you grant access via an AD Group you have to ask the user to reboot.  The only solution is to establish pre-existing groups (eg: Department Name or Job Function), and then use Nested Groups when object access is required.  Permissions will effect immediately.  It requires process and coordination.
 
 ## How to implement POWERBI-AD-GROUPS?
 
