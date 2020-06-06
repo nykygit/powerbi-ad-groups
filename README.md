@@ -19,7 +19,7 @@ Another major Access Control issue that is quite bothersome is the fact that add
 
 ## How to implement POWERBI-AD-GROUPS?
 
-Included are a number of scripts with detailed instructions in each.  It's a one time setup really.  Here is a basic overview of the process:
+Here is a basic overview of the process:
 
 1. Create an AD OU that will host the AD Security Groups
 2. Create a Managed Service Account and register it on the Server that will run the PowerShell Script via Windows Task Scheduler.
