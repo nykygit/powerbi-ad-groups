@@ -6,27 +6,16 @@ CONFIG
 =======================================================
 #>
 
+# GroupInfo is descriptive text used in the AD Security Group Info Property.
 $GroupInfo = "These AD Security Groups are automatically created, updated and removed to sync with POWERBI Objects for group based access control."
+
+# ADPath is where we are storing our POWERBI Security Groups in Active Directory
 $ADPath = "OU=POWERBI,OU=Groups,OU=LAB,DC=LAB,DC=COM"
 
-<#
-=======================================================
-Get current AD Groups from AD
-=======================================================
-#>
+# CurrentGroups is a list of all POWERBI Security Groups that currently exist.  We need this to determine if any groups were deprecated.
+$CurrentGroups = 
 
-
-<#
-=======================================================
-Get required AD Groups from SQL
-=======================================================
-#>
-
-#testing
-#$GroupName = "APP_POWERBI_REPORT_333222111111"
-#$GroupDescription = "Access to POWERBI OBJECT - https://powerbi.company.com/report/ORG/DEP/APP_POWERBI_REPORT_54858"
-
-## get list of groups to create
+# RequiredGroups is a list of all POWER Security Groups that need to exist.  This is based on Report Server Object GUIDs.
 $RequiredGroups = Read-SqlViewData -ServerInstance "SQL1" -DatabaseName "ADSQL" -SchemaName "dbo" -ViewName "VIEW_POWERBI_GROUPS"
 
 
